@@ -1,0 +1,23 @@
+digraph PY_W4_004 {
+  rankdir=TB; graph [bgcolor="white", pad="0.25", nodesep="0.45", ranksep="0.55", label="PY-W4-004 | Application Architecture", labelloc=t, fontsize=20, fontname="Arial"];
+  node [shape=box, style="rounded,filled", fillcolor="#EAF2F8", color="#456A85", fontname="Arial", fontsize=10, margin="0.16,0.10"];
+  edge [color="#526777", arrowsize=0.75];
+  users [label="Admin / Employee"];
+  clients [label="Swagger UI / API Clients"];
+  dashboard [label="Streamlit Admin Dashboard"];
+  api [label="FastAPI REST API"];
+  auth [label="JWT Authentication\n& Role Checks", fillcolor="#FDEBD0"];
+  emp [label="Employee & Department Routes"];
+  docs [label="Document Processing\nPDF / CSV / TXT / DOCX"];
+  wf [label="Workflow Engine\nApprove / Reject / History"];
+  reports [label="Reporting\nJSON / CSV / PDF"];
+  orm [label="SQLAlchemy ORM"];
+  db [shape=cylinder, label="SQLite Database", fillcolor="#E8F8F5"];
+  files [shape=folder, label="uploads/ storage"];
+  logs [shape=folder, label="logs/ activity"];
+  users -> dashboard; users -> clients; users -> api;
+  dashboard -> api; clients -> api;
+  api -> auth; api -> emp; api -> docs; api -> wf; api -> reports;
+  emp -> orm; docs -> orm; wf -> orm; reports -> orm; auth -> orm;
+  orm -> db; docs -> files; wf -> logs;
+}

@@ -1,0 +1,17 @@
+flowchart TD
+    U[Admin / Employee] --> API[FastAPI REST API]
+    U --> SW[Swagger UI]
+    U --> UI[Authenticated Streamlit Dashboard]
+    API --> AUTH[JWT Authentication and RBAC]
+    API --> EMP[Employee and Department Routes]
+    API --> DOC[Document Processing Engine]
+    API --> WF[Workflow Engine]
+    API --> REP[Reporting Routes]
+    EMP --> ORM[SQLAlchemy ORM]
+    DOC --> ORM
+    WF --> ORM
+    REP --> ORM
+    ORM --> DB[(SQLite Database)]
+    DOC --> FS[(Uploads Folder)]
+    WF --> LOG[Application Logs and Optional SMTP]
+    REP --> OUT[CSV / JSON / PDF Reports]

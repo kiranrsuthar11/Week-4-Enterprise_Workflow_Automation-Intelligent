@@ -1,0 +1,16 @@
+digraph ERD {
+  rankdir=LR; graph [bgcolor="white", pad="0.25", nodesep="0.55", ranksep="0.7", label="PY-W4-004 | Database Entity Relationship Diagram", labelloc=t, fontsize=18, fontname="Arial"];
+  node [shape=record, style="filled", fillcolor="#F4F6F7", color="#566573", fontname="Arial", fontsize=9];
+  edge [color="#2874A6", fontname="Arial", fontsize=9];
+  users [label="{users|id PK\lusername UNIQUE\lpassword_hash\lrole\lis_active\lcreated_at\l}"];
+  departments [label="{departments|id PK\lname UNIQUE\l}"];
+  employees [label="{employees|id PK\lemployee_code UNIQUE\lname\lemail UNIQUE\ljob_title\lstatus\ldepartment_id FK\l}"];
+  documents [label="{documents|id PK\loriginal_name\lstored_name UNIQUE\lextension\lsize_bytes\lsha256 UNIQUE\lcategory\lextracted_text\luploaded_by FK\l}"];
+  workflows [label="{workflows|id PK\ltitle\ldescription\lstatus\ldocument_id FK\lcreated_by FK\lcreated_at\lupdated_at\l}"];
+  workflow_activities [label="{workflow_activities|id PK\lworkflow_id FK\lactor\laction\lnote\lcreated_at\l}"];
+  departments -> employees [label="1 to many"];
+  users -> documents [label="uploads"];
+  users -> workflows [label="creates"];
+  documents -> workflows [label="0..many"];
+  workflows -> workflow_activities [label="1 to many"];
+}
